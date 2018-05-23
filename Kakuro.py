@@ -180,7 +180,9 @@ def juego():
     btn_cargar=Button(juegoraiz, bg='steel blue', text='Cargar\nJuego', font=('Console',20),
                        width=7, bd='2', relief=RAISED).place(x=1200,y=300)
     btn_rehace=Button(juegoraiz, bg='steel blue', text='Rehacer\nJugada', font=('Console',20),
-                       width=7, bd='2', relief=RAISED,command=lambda:rehacer()).place(x=1130,y=400)
+                       width=7, bd='2', relief=RAISED,command=lambda:rehacer()).place(x=1060,y=400)
+    btn_posibles=Button(juegoraiz, bg='steel blue', text='Posibles\nJugadas', font=('Console',20),
+                       width=7, bd='2',command=lambda:posibles_jugadas(),relief=RAISED).place(x=1200,y=400)
 
     #Crea el frame del controlador de tiempo y le da algunas caracteristicas
     relojframe=Frame(juegoraiz)
@@ -199,6 +201,28 @@ def juego():
             
     juegoraiz.mainloop()
 
+"Función que genera las opciones de un jugador para completar una clave"
+def posibles_jugadas():
+    raiz_posibles=Tk()
+    raiz_posibles.title("Posibles Jugadas")
+    raiz_posibles.geometry("600x240+100+100")
+    raiz_posibles.resizable(False,False)
+    raiz_posibles.config(bg="red")
+    Label(raiz_posibles,text="Clave que desea completar:", font=("Console",20),
+          bg='red', fg="snow").place(x=15,y=15)
+    Label(raiz_posibles,text="Cantidad de casillas:", font=("Console",20),
+          bg='red', fg="snow").place(x=15,y=65)
+    clave=StringVar
+    ctd_casillas=StringVar
+    clave_etd=Entry(raiz_posibles,textvariable=clave,width=30, justify="right",
+                    bg="snow").place(x=360,y=20)
+    casillas_etd=Entry(raiz_posibles,textvariable=ctd_casillas,width=30, justify="right",
+                       bg="snow").place(x=280,y=71)
+    Button(raiz_posibles, bg='snow', text='Aceptar', font=('Console',20),
+           width=7, bd='2', relief=RAISED,command=lambda:jugadas()).place(x=100,y=110)
+    
+
+    
     
 "Función que borra la jugada anterior que realizó el jugador"
 def borrar_jugada():
