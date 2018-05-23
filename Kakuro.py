@@ -384,7 +384,7 @@ def escoger_partida():
     dificultad=dificultad[0]
     abrir_partidas = open("kakuro2018partidas.txt",'r')
     cont=0
-    if dificultad=="1 Neurona":
+    if dificultad=="1 Neurona" or dificultad=="Multinivel":
         while cont!=1:
             contenido=abrir_partidas.readline()
             cont+=1
@@ -627,7 +627,8 @@ def configuracion():
     #Lista de niveles de dificultad
     niveles=["1 Neurona",
              "2 Neuronas",
-             "3 Neuronas"]
+             "3 Neuronas",
+             "Multinivel"]
 
     #Lista de opciones para controlar el tiempo
     reloj=["Sí",
@@ -678,6 +679,12 @@ def guardar_conf():
         f.write("['3 Neuronas','Sí','0']")
     elif nivel=="3 Neuronas" and reloj=='No':
         f.write("['3 Neuronas','No','0']")
+    elif nivel=="Multinivel" and reloj=='Sí':
+        f.write("['Multinivel','Sí','0']")
+    elif nivel=="Multinivel" and reloj=='No':
+        f.write("['Multinivel','No','0']")
+    elif nivel=="1 Neurona" and reloj=='Timer':
+        f.write("['Multinivel','Timer','0']")
     else:
         f.write("['3 Neuronas','Timer']")
     f.close()
